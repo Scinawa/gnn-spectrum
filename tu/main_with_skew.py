@@ -67,6 +67,8 @@ def eval(model, dataloader, criterion, device):
     return loss, acc
 
 
+
+#(Scin) i think we have to change num_feature
 def run_given_fold(num_feature,
                    num_classes,
                    num_basis,
@@ -166,6 +168,9 @@ def run_model(config):
         g = dgl.add_self_loop(g)
         dataset.graph_lists[i] = basis_transform(g, basis=basis, epsilon=epsilon, power=power, identity=identity)
 
+    import pdb
+    pdb.set_trace()
+
     total_time = time.time() - trans_start
     print('Basis transformation total and avg time:', total_time, total_time / len(dataset))
     print("Basis total: {}".format(dataset.graph_lists[0].edata['bases'].shape[1]))
@@ -185,7 +190,7 @@ def run_model(config):
               ', COMMIT_ID=' + config.commit_id)
 
         test_accs, train_losses, train_accs = run_given_fold(
-            dataset.graph_lists[0].ndata['feat'].shape[1],
+            dataset.graph_lists[0].ndata['feat'].shape[1],    #(Scin) this becomes num features.
             dataset.num_labels,
             dataset.graph_lists[0].edata['bases'].shape[1],
             train_loader,

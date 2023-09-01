@@ -4,11 +4,11 @@
   "epsilon": 0.5,
   "power": 18,
   "seeds": [0],
-  "num_folds": 10,
+  "num_folds": 2, // 10 
   "num_workers": 8,
   "hyperparams": {
     "batch_size": 64,
-    "epochs": 501,
+    "epochs": 50,    // 500
     "learning_rate": 0.001,
     "step_size": 50,
     "decay_rate": 0.6
