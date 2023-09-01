@@ -18,7 +18,7 @@ config_file="./configs/"$dataset".json"
 
 eval "$(conda shell.bash hook)"
 conda activate sage310
-python ./generate-tu-skewS.py
+python ./generate-tu-skewS.py --config=$config_file
 conda deactivate
 
 echo "Finished generation"
